@@ -1,7 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { getAllPosesCategoriesFeatured,getAllPosesFeatured } from "@/services/cmsServices";
+import {
+    getAllPosesCategoriesFeatured,
+    getAllPosesFeatured
+} from "@/services/cmsServices";
 import {
     Card,
     CardContent,
@@ -10,15 +13,15 @@ import {
     CardHeader,
     CardTitle
 } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge"
-import { badgeVariants } from "@/components/ui/badge"
+import { Badge } from "@/components/ui/badge";
+import { badgeVariants } from "@/components/ui/badge";
 import { FaLongArrowAltRight } from "react-icons/fa";
 
 export default async function Home() {
     const posesCategories = await getAllPosesCategoriesFeatured(3);
-   // console.log(posesCategories);
-    const poses=await getAllPosesFeatured(3)
-    console.log(poses)
+    // console.log(posesCategories);
+    const poses = await getAllPosesFeatured(3);
+    console.log(poses);
     return (
         <div className=' relative isolate  pt-14 lg:px-8'>
             <div className='relative'>
@@ -39,7 +42,7 @@ export default async function Home() {
                         <div className=' z-20 rounded-full px-3 py-1 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20'>
                             Announcing our next round of funding.{" "}
                             <Link
-                                href="/"
+                                href='/'
                                 className='font-semibold text-indigo-600'
                             >
                                 <span
@@ -103,13 +106,13 @@ export default async function Home() {
                 </h1>
                 <div
                     id='yoga_categories'
-                    className=' px-10 mt-5 flex items-center justify-center flex-col '
+                    className='flex-wrap px-10 mt-5 m-2 flex items-center justify-center flex-col '
                 >
                     {posesCategories.map(category => {
                         return (
                             <Card
                                 key={category.id}
-                                className='dark:bg-secondary relative my-3 overflow-hidden'
+                                className='max-w-[300px] dark:bg-secondary relative my-3 overflow-hidden'
                             >
                                 <CardHeader className='p-0 object-fill  min-h-[100px]  flex items-center justify-center'>
                                     <Image
@@ -128,14 +131,18 @@ export default async function Home() {
                                 </CardContent>
                                 <CardFooter>
                                     <Button className='mt-0.5'>
-                                        <Link href={`/category/${category.categorySlug}/`}>Learn More</Link>
+                                        <Link
+                                            href={`/category/${category.categorySlug}/`}
+                                        >
+                                            Learn More
+                                        </Link>
                                     </Button>
                                 </CardFooter>
                             </Card>
                         );
                     })}
                     <Button className='mt-5 flex items-center justify-center'>
-                        <Link href="/category/"> See More{" "}</Link>
+                        <Link href='/category/'> See More </Link>
                         <span
                             className='ml-2 text-primary-forground'
                             ariaHidden='true'
@@ -168,12 +175,18 @@ export default async function Home() {
                                         ></Image>
                                     </CardHeader>
                                     <CardContent>
-                                       {pose.posesCategories.map((category)=>{
-                                         return(
-                                           <Badge className="mr-1" variant="blue"><Link href="/">{category.categoryName}</Link></Badge>
-
-                                          )
-                                       })}
+                                        {pose.posesCategories.map(category => {
+                                            return (
+                                                <Badge
+                                                    className='mr-1'
+                                                    variant='blue'
+                                                >
+                                                    <Link href='/'>
+                                                        {category.categoryName}
+                                                    </Link>
+                                                </Badge>
+                                            );
+                                        })}
 
                                         <CardTitle className='text-[20px]'>
                                             {pose.poseName}
@@ -182,14 +195,18 @@ export default async function Home() {
                                     </CardContent>
                                     <CardFooter>
                                         <Button className='mt-0.5'>
-                                            <Link href={`/category/${pose.posesCategories[0].categorySlug}/${pose.poseSlug}`}>Read More</Link>
+                                            <Link
+                                                href={`/category/${pose.posesCategories[0].categorySlug}/${pose.poseSlug}`}
+                                            >
+                                                Read More
+                                            </Link>
                                         </Button>
                                     </CardFooter>
                                 </Card>
                             );
                         })}
                         <Button className='mt-5 flex items-center justify-center'>
-                            See More{" "}
+                            <Link href='/poses/'> See More </Link>
                             <span
                                 className='ml-2 text-primary-forground'
                                 ariaHidden='true'

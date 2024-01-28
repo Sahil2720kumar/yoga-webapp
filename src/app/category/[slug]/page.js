@@ -46,14 +46,14 @@ export default async function Page({ params, searchParams }) {
                 <h1 className='text-3xl font-bold text-center'>Yoga Poses</h1>
                 <div
                     id='yoga_poses'
-                    className=' px-10 mt-8 flex items-center justify-center flex-col '
+                    className='flex-wrap m-2  px-10 mt-8 flex items-center justify-center flex-col '
                 >
                     {poses.length !== 0 ? (
                         poses.map(pose => {
                             return (
                                 <Card
                                     key={pose.id}
-                                    className='dark:bg-secondary relative my-3 overflow-hidden'
+                                    className='max-w-[300px] dark:bg-secondary relative my-3 overflow-hidden'
                                 >
                                     <CardHeader className='p-0 object-fill  min-h-[100px]  flex items-center justify-center'>
                                         <Image

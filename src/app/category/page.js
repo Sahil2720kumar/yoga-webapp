@@ -21,13 +21,13 @@ export default async function Page() {
             <h1 className='text-3xl font-bold text-center'>Yoga Category</h1>
             <div
                 id='yoga_categories'
-                className=' px-10 mt-5 flex items-center justify-center flex-col '
+                className='flex-wrap m-2 px-10 mt-5 flex items-center justify-center flex-col '
             >
                 {posesCategories.map(category => {
                     return (
                         <Card
                             key={category.id}
-                            className='dark:bg-secondary relative my-3 overflow-hidden'
+                            className='max-w-[300px] dark:bg-secondary relative my-3 overflow-hidden'
                         >
                             <CardHeader className='p-0 object-fill  min-h-[100px]  flex items-center justify-center'>
                                 <Image
